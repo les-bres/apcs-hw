@@ -32,10 +32,9 @@ public class DoubleLL<E>
         else
         {
             n.next = current;
-            if (current.prev != null) {
+            if (current.prev != null)
                 current.prev.next = n;
                 n.prev = current.prev;
-	    }
             current.prev = n;
             current = n;
         }
@@ -60,10 +59,11 @@ public class DoubleLL<E>
         if ( current == null )
             return "";
         
-        while ( current.getPrev() != null )
-            current = current.getPrev();
-        
         Node<E> tmp = current;
+        
+        while ( temp.getPrev() != null )
+            temp = temp.getPrev();
+        
         String s = "";
         
         while ( tmp != null )
