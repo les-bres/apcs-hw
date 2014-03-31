@@ -1,3 +1,5 @@
+// Leslie Bresnahan & Peter Duchovni
+
 public class LinkedList<E> {
     private Node<E> head;
     private Node<E> tail;
