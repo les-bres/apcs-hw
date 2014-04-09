@@ -13,7 +13,7 @@ public class Postfix {
 
     public void use() {
 	while (true) {
-	    String line = getString("Enter your desired calculation in postfix notation (or enter clear):");
+	    String line = getString("Enter your a number or operation (or enter clear): ");
 	    calculate( line );
 	    System.out.println( stack );
 	}
@@ -25,38 +25,38 @@ public class Postfix {
 	    stack = new MyStack();
 	    return;
 	}
-
-	String c;
-	while ( s.length() > 0 ) {
-	    c = s.substring(0,1);
-	    if (isInt( c )) {
-		stack.push( c );
+	
+	if (isDoub( s )) {
+	    stack.push( Double.parseDouble(s) + "" );
+	}
+	else {
+	    
+	    if (stack.size() < 2) {
+		System.out.println("You need to enter numbers first") ;
+		return;
 	    }
-	    else {
-		String num1 = stack.pop();
-		String num2 = stack.pop();
+	    
+	    Double num1 = Double.parseDouble(stack.pop());
+	    Double num2 = Double.parseDouble(stack.pop());
 
-		if (c.equals("+")) {
-		    stack.push( (Integer.parseInt( num1 ) + Integer.parseInt( num2 )) + "" );
-		}
-		else if (c.equals("-")) {
-		    stack.push( (Integer.parseInt( num1 ) - Integer.parseInt( num2 )) + "" );
-		}
-		else if (c.equals("*")) {
-		    stack.push( (Integer.parseInt( num1 ) * Integer.parseInt( num2 )) + "" );
-		}
-		else if (c.equals("/")) {
-		    stack.push( (Integer.parseInt( num1 ) / Integer.parseInt( num2 )) + "" );
-		}
+	    if (s.equals("+")) {
+		stack.push( num1 + num2 + "");
 	    }
-	    s = s.substring(1);
-
+	    else if (s.equals("-")) {
+		stack.push( num1 - num2 + "");
+	    }
+	    else if (s.equals("*")) {
+		stack.push( num1 * num2 + "" );
+	    }
+	    else if (s.equals("/")) {
+		stack.push( num1 / num2 + "" );
+	    }
 	}
     }
 
-    public boolean isInt( String s ) {
+    public boolean isDoub( String s ) {
 	try {
-	    Integer.parseInt( s );
+	    Double.parseDouble( s );
 	}
 	catch (NumberFormatException e ) {
 	    return false;
@@ -70,7 +70,7 @@ public class Postfix {
 	boolean getString = true;
 	String inString = "0";
 	while (getString) {
-	    System.out.println( x );
+	    System.out.print( x );
 	    try {
 		inString = Keyboard.readString();
 		getString = false;
@@ -87,4 +87,3 @@ public class Postfix {
 	calc.use();
     }
 }
-	

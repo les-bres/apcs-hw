@@ -55,23 +55,14 @@ public class MyStack {
     public String toString() {
 	String retString = "";
 
-        if (top < 0) {
-	    return "";
+	for (int i = top; i > -1; i--) {
+	    retString += data[i] + ", ";
 	}
+	
+	if (retString.length() > 0) 
+	    retString = retString.substring(0, retString.length() - 2);
 
-	int num = 0;
-	String temp = data[num];
-
-        while (temp != null) {
-	    retString += temp + ", ";
-	   
-	    num++;
-	    if ( num >= data.length ) 
-		break;
-	    temp = data[num];  
-	}
-
-	return retString.substring(0, retString.length() - 2);
+	return retString;
     }
 
 
@@ -105,9 +96,3 @@ public class MyStack {
 	System.out.println( stack );
     }
 }
-
-	
-
-       
-
-	
