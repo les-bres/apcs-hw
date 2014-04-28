@@ -22,7 +22,15 @@ public class BST {
 		temp = temp.getLeft();
 	    }
 	}
-	pig.setNext(n);
+	
+	if (pig != null) {
+	    if (n.getData() > pig.getData()) {
+		pig.setRight( n );
+	    }
+	    else {
+		pig.setLeft( n );
+	    }
+	}
     }
 
     public Node search(int d){
@@ -52,7 +60,7 @@ public class BST {
 	    return c;
 
 
-	if ( d > c.getData() ) {
+	if ( x > c.getData() ) {
 	    return search2( c.getRight(), x);
 	}
 	else {
